@@ -204,6 +204,8 @@ nav {
   align-items: center;
   padding-left: 20px;
   font-size: 20px;
+  user-select: none;
+  cursor: text;
 }
 
 .noteTakingDivDemo:focus {
@@ -270,6 +272,20 @@ nav {
   border: 1px solid #d9d9d9;
   border-radius: 10px;
   padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.note-grid-item:hover, .note-grid-item:focus {
+  box-shadow: 0 0 10px #f0f0f0;
+  border-color: silver;
+}
+
+.note-grid-item, .note-grid-item h2, .note-grid-item p {
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .note-grid-item h2 {
@@ -291,4 +307,10 @@ nav {
 
 .github-link-footer:hover, .github-link-footer:focus, .github-link-footer:active {
   color: #454c54;
+}
+
+.note-grid-item-skeleton {
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  height: 200px;
 }
