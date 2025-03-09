@@ -1,0 +1,11 @@
+@media only screen and (max-width: 600px) {
+    .btn {
+        padding: 12px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .note-grid {
+        grid-template-columns: 1fr;
+    }
+}
