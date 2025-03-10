@@ -84,7 +84,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
         className={`modal ${isOpen ? '' : 'closing'}`}
       >
         <div className="modal-content">
-            <button className="modal-close-btn" tabIndex={0} onClick={(e) => { handleClose() }}>
+            <button className="modal-close-btn" tabIndex={0} onClick={(e) => { handleClose() }} aria-label="Close modal">
                 <i class="bi bi-x-lg"></i>
             </button>
             {children}
