@@ -249,6 +249,7 @@ nav {
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
   color: silver;
+  font-weight: 400;
 }
 
 .notetaker-bottom-flex {

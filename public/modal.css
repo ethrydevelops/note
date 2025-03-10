@@ -87,12 +87,6 @@
 .note-modal-title {
     font-size: 30px;
     margin-bottom: 7px;
-
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: gray;
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
 }
 
 .note-modal-buttons-end {

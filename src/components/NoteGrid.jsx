@@ -86,12 +86,10 @@ export default function NoteGrid() {
             <Modal isOpen={isModalOpen} closeModal={closeModal}>
                 <form onSubmit={updateNote}>
                     <label id="note-edit-modal-title" class="sr-only">Note title</label>
-                    <h2 className="note-modal-title m-0 p-0 note-modal-input-element-either" aria-labelledby="note-edit-modal-title" tabIndex={0} contentEditable={true} spellCheck={true} onInput={(e) => {setNoteModalEditedToTitle(e.target.innerText)}}>{noteModalContents.title}</h2>
+                    <h2 className="note-modal-title m-0 p-0 note-modal-input-element-either" aria-labelledby="note-edit-modal-title" tabIndex={0} contentEditable={true} spellCheck={true} onInput={(e) => {setNoteModalEditedToTitle(e.target.innerText)}} placeholder="Title">{noteModalContents.title.trim()}</h2>
 
                     <label id="note-edit-modal-contents" class="sr-only">Note contents</label>
-                    <p className="m-0 p-0 note-modal-input-element-either" aria-labelledby="note-edit-modal-contents" tabIndex={0} contentEditable={true} spellCheck={true} onInput={(e) => {setNoteModalEditedToContent(e.target.innerText)}}>
-                        {noteModalContents.content}
-                    </p>
+                    <p className="m-0 p-0 note-modal-input-element-either note-modal-input-content" aria-labelledby="note-edit-modal-contents" tabIndex={0} contentEditable={true} spellCheck={true} onInput={(e) => {setNoteModalEditedToContent(e.target.innerText)}} placeholder="Your note goes here...">{noteModalContents.content.trim()}</p>
 
                     <div className="note-modal-buttons-end">
                         <span className={modalTipClass}>{modalTip}</span>
