@@ -145,7 +145,9 @@ export default function Home() {
           <div className={"actualNoteTakingDiv sizeRestrictionForDemo noteTakingDiv" + (noteTakingDivDemoShown ? " d-none" : "")} tabIndex={1}>
             <input type="text" name="new-note-title-input" className="new-note-title-input" id="new-note-title-input" placeholder="Title" aria-label="Set a title for this note" maxLength="50" onInput={(e) => {setNewNoteTitle(e.target.value)}} /> 
 
-            <div id="noteTakerInput" class="new-note-taker-input" contentEditable="true" placeholder="Take a note..." aria-label="Take a note..." autoCorrect="true" onInput={(e) => { if(e.target.innerText.length > 2000){e.preventDefault(); e.target.innerText = newNoteContent; return false;} setNewNoteContent(e.target.innerText); }}></div> 
+            <label id="note-create-not-modal-contents" class="sr-only">Note contents</label>
+
+            <div id="noteTakerInput" class="new-note-taker-input" contentEditable="true" placeholder="Take a note..." aria-labelledby="note-create-not-modal-contents" autoCorrect="true" onInput={(e) => { if(e.target.innerText.length > 2000){e.preventDefault(); e.target.innerText = newNoteContent; return false;} setNewNoteContent(e.target.innerText); }}></div> 
 
             <div className="notetaker-bottom-flex">
               <p className="m-0 p-0 mv-auto text-danger">{newNoteCreationError}</p>

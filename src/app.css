@@ -323,3 +323,15 @@ nav {
   line-clamp: 5;
   -webkit-line-clamp: 5;
 }
+
+.sr-only { /* screenreader only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
