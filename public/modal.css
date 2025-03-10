@@ -116,3 +116,7 @@
     color: #620811;
     outline: 1px solid #620811;
 }
+
+.note-modal-input-content {
+    white-space: pre;
+}
