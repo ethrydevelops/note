@@ -24,6 +24,20 @@ const Modal = ({ isOpen, closeModal, children }) => {
     }
   }, [isOpen]);
 
+  // Close modal on Esc key
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        handleClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isOpen]);
+
   // focus trap
   useEffect(() => {
     if (isOpen) {
@@ -46,7 +60,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
     }, 50);
   };
 
-  const handleKeyDown = (event) => {
+  const handleTabKeyNavigation = (event) => {
     const { key, shiftKey } = event;
 
     if (key === 'Tab' && focusableElementsRef.current.length > 0) {
@@ -80,12 +94,12 @@ const Modal = ({ isOpen, closeModal, children }) => {
         aria-labelledby="modal-title"
         aria-hidden={!isOpen}
         tabIndex={-1}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handleTabKeyNavigation}
         className={`modal ${isOpen ? '' : 'closing'}`}
       >
         <div className="modal-content">
-            <button className="modal-close-btn" tabIndex={0} onClick={(e) => { handleClose() }} aria-label="Close modal">
-                <i class="bi bi-x-lg"></i>
+            <button className="modal-close-btn" tabIndex={0} onClick={handleClose} aria-label="Close modal">
+                <i className="bi bi-x-lg"></i>
             </button>
             {children}
         </div>
