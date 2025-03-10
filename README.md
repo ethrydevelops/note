@@ -12,6 +12,6 @@ A simple note-taking web app.
 * [ ] Live updates w/ socket.io:
     * [ ] Client
     * [ ] Server
-
+* [ ] Sort notes by creation/last update (modification) (will require changing all—db+server+client)
 * [ ] HTTPS on server
 * [ ] E2EE (client obviously)
