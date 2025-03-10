@@ -8,7 +8,7 @@ A simple note-taking web app.
     * [x] view enlarged
     * [x] edit
     * [ ] delete
-* [ ] Read more - client
+* [x] Read more - client
 * [ ] Live updates w/ socket.io:
     * [ ] Client
     * [ ] Server
