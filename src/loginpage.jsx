@@ -1,8 +1,9 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import NavBar from './components/navbar';
 import wretch from "wretch";
 import "@fontsource/inter";
 import Cookies from 'universal-cookie';
+import { useLocation } from 'preact-iso';
 
 export default function Home() {
     const [username, setUsername] = useState('');
@@ -73,9 +74,24 @@ export default function Home() {
                     setErrorMsgType('text-success');
                     setError("You have been signed up! You may now login.");
                 })
-                .catch(error => { setError("Something went wrong. Try a different hostname?") })
+                .catch(error => {
+                    if(error.json?.error) {
+                        setError(error.json?.error);
+                    } else {
+                        setError("Something went wrong. Try a different hostname?")
+                    }
+                })
         }
     };
+
+    const authToken = cookies.get("noteauth_token");
+    const { url } = useLocation();
+
+    useEffect(() => {
+        if (!!authToken) {
+            window.location.href = "/app"; // redirect if logged in
+        }
+    }, [authToken, url]);
 
     return (
         <div className="layout">
