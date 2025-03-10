@@ -266,6 +266,7 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
+  grid-auto-rows: 1fr;
 }
 
 .note-grid-item {
@@ -313,4 +314,12 @@ nav {
   background: #fff;
   border: 1px solid #d9d9d9;
   height: 200px;
+}
+
+.note-grid-paragraph {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
 }
