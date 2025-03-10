@@ -28,6 +28,19 @@ export default function Home() {
     }
 
     setGreeting(getGreeting());
+
+    /* fix enter =/= click */
+    const handleKeyUpForSelect = (event) => {
+      if (event.key === 'Enter') {
+        const focusedElement = document.activeElement;
+
+        if (focusedElement && focusedElement.tagName === 'DIV' && !focusedElement.isContentEditable) {
+          focusedElement.click();
+        }
+      }
+    };
+
+    document.addEventListener('keyup', handleKeyUpForSelect);
   })
 
   const takeNote = (e) => {
