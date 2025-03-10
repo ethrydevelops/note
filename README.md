@@ -9,6 +9,7 @@ A simple note-taking web app.
     * [x] edit
     * [ ] delete
 * [x] Read more - client
+* [ ] Auto-redirect to notes when logged in
 * [ ] Live updates w/ socket.io:
     * [ ] Client
     * [ ] Server
