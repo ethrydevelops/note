@@ -3,15 +3,20 @@ import Cookies from 'universal-cookie';
 import wretch from 'wretch';
 import Modal from './Modal';
 
+/* this might be the worst code ive written in my life */
+
 export default function NoteGrid() {
     const [notes, setNotes] = useState([]);
     const [noteModalContents, setNoteModalContents] = useState({title:"loading", content: "loading"});
+    const [noteModalId, setNoteModalId] = useState("loading");
 
     const [noteModalEditedToTitle, setNoteModalEditedToTitle] = useState("");
     const [noteModalEditedToContent, setNoteModalEditedToContent] = useState("");
 
     const [modalTipClass, setModalTipClass] = useState("text-danger");
     const [modalTip, setModalTip] = useState("Error");
+
+    const [deleteModalNoteName, setDeleteModalNoteName] = useState("");
 
     const cookies = new Cookies(null, { path: "/" });
 
@@ -30,13 +35,46 @@ export default function NoteGrid() {
         refreshNotes();
     }, []);
 
+    /* modals */
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => setIsModalOpen(true); // note preview modal
+    const closeModal = () => setIsModalOpen(false); // note preview modal
+
+    const [secondDeleteModalOpened, setSecondDeleteModalOpened] = useState(false);
+    const openSingleNoteDeleteModal = (noteId) => {
+        setDeleteModalNoteName("Loading");
+
+        wretch(`${cookies.get("noteauth_hostname")}/notes/${noteId}`)
+            .auth(`Bearer ${cookies.get("noteauth_token")}`)
+            .get()
+            .json((resp) => {
+                setDeleteModalNoteName(resp.title)
+                setSecondDeleteModalOpened(true);
+            });
+    }
+
+    const closeSingleNoteDeleteModal = () => {
+        setSecondDeleteModalOpened(false);
+    }
+
+    const deleteSingleNote = (id) => {
+        wretch(`${cookies.get("noteauth_hostname")}/notes/${id}`)
+            .auth(`Bearer ${cookies.get("noteauth_token")}`)
+            .delete()
+            .json((resp) => {
+                closeModal();
+                refreshNotes();
+
+                setSecondDeleteModalOpened(false);
+            });
+    }
 
     const modalSet = (id) => {
         // TODO: update live w/ websockets
+
+        setNoteModalId(id);
         wretch(`${cookies.get("noteauth_hostname")}/notes/${id}`)
             .auth(`Bearer ${cookies.get("noteauth_token")}`)
             .get()
@@ -91,11 +129,31 @@ export default function NoteGrid() {
                     <label id="note-edit-modal-contents" class="sr-only">Note contents</label>
                     <p className="m-0 p-0 note-modal-input-element-either note-modal-input-content" aria-labelledby="note-edit-modal-contents" tabIndex={0} contentEditable={true} spellCheck={true} onInput={(e) => {setNoteModalEditedToContent(e.target.innerText)}} placeholder="Your note goes here...">{noteModalContents.content.trim()}</p>
 
-                    <div className="note-modal-buttons-end">
-                        <span className={modalTipClass}>{modalTip}</span>
-                        <button className="btn btn-primary">Save</button>
+                    <div className="note-modal-buttons">
+                        <div>
+                            <button className="note-modal-delete-button" aria-label="Delete this note" onClick={(e) => {openSingleNoteDeleteModal(noteModalId);}}>
+                                <i class="bi bi-trash-fill"></i>
+                                </button>
+                        </div>
+
+                        <div className="note-modal-buttons-end">
+                            <span className={modalTipClass}>{modalTip}</span>
+                            <button className="btn btn-primary">Save</button>
+                        </div>
                     </div>
                 </form>
+            </Modal>
+
+            <Modal isOpen={secondDeleteModalOpened} closeModal={closeSingleNoteDeleteModal}>
+                <h1 className="m-0 p-0">Delete '{deleteModalNoteName}'?</h1>
+                <p className="m-0 p-0">Are you sure you want to permanently delete <b>{deleteModalNoteName}</b>?</p>
+
+                <div className="flex-things-centered">
+                    <div className="flex-delete-buttons">
+                        <button className="btn btn-danger" onClick={(e) => {deleteSingleNote(noteModalId)}}>Delete Note</button>
+                        <button className="btn btn-secondary" onClick={closeSingleNoteDeleteModal}>Cancel</button>
+                    </div>
+                </div>
             </Modal>
 
             <div className="note-grid">

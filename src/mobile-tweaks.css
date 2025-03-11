@@ -8,4 +8,15 @@
     .note-grid {
         grid-template-columns: 1fr;
     }
+
+    .flex-delete-buttons {
+        display: grid;
+        grid-template-columns: 1;
+        gap: 3%;
+        width: 100%;
+    }
+
+    .flex-delete-buttons button {
+        width: 100% !important;
+    }
 }

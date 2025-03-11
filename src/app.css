@@ -320,3 +320,15 @@ nav {
 .note-modal-delete-button:hover, .note-modal-delete-button:active, .note-modal-delete-button:focus {
   color: #620811;
 }
+
+.flex-things-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-delete-buttons {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
