@@ -1,0 +1,46 @@
+
+
+.btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+  
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* ----- */
+
+.btn-primary {
+    background: #5300c7;
+    color: white;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: #2a0064;
+}
+
+
+
+.btn-secondary {
+    background: #454545;
+    color: white;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+    background: #303030;
+}
+
+
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+    background: #620811;
+}
