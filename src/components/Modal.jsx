@@ -97,7 +97,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
         onKeyDown={handleTabKeyNavigation}
         className={`modal ${isOpen ? '' : 'closing'}`}
       >
-        <div className="modal-content">
+        <div className="modal-content" tabIndex={0}>
             <button className="modal-close-btn" tabIndex={0} onClick={handleClose} aria-label="Close modal">
                 <i className="bi bi-x-lg"></i>
             </button>

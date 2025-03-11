@@ -82,6 +82,7 @@
     overflow: auto;
     transition: 0.3s;
     position: relative;
+    outline: none;
 }
 
 .note-modal-title {
