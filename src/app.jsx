@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks';
 import "@fontsource/inter";
 import NavBar from './components/navbar';
 import wretch from 'wretch';
