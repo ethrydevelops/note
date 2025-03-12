@@ -60,6 +60,10 @@ nav {
   width: calc(100% - 60px); /* honestly not sure why this is needed */
 }
 
+.text-secondary {
+  color: #6c757d;
+}
+
 .text-danger {
   color: #dc3545;
 }

@@ -104,6 +104,13 @@
     gap: 10px;
 }
 
+.note-modal-buttons-start {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
 .modal-close-btn {
     position: absolute;
     top: 5px;

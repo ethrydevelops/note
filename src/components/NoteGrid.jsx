@@ -8,7 +8,7 @@ import socket from '../socket';
 
 export default function NoteGrid() {
     const [notes, setNotes] = useState([]);
-    const [noteModalContents, setNoteModalContents] = useState({title:"loading", content: "loading"});
+    const [noteModalContents, setNoteModalContents] = useState({title:"loading", content: "loading", updated_at: "loading"});
     const [noteModalId, setNoteModalId] = useState("loading");
 
     const [noteModalEditedToTitle, setNoteModalEditedToTitle] = useState("");
@@ -143,10 +143,12 @@ export default function NoteGrid() {
                     <p className="m-0 p-0 note-modal-input-element-either note-modal-input-content" aria-labelledby="note-edit-modal-contents" tabIndex={0} contentEditable={true} spellCheck={true} onInput={(e) => {setNoteModalEditedToContent(e.target.innerText)}} placeholder="Your note goes here...">{noteModalContents.content.trim()}</p>
 
                     <div className="note-modal-buttons">
-                        <div>
+                        <div className="note-modal-buttons-start">
                             <button className="note-modal-delete-button" aria-label="Delete this note" onClick={(e) => {openSingleNoteDeleteModal(noteModalId);}} type="button">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
+
+                            <p className="m-0 p-0 text-secondary">{new Date(noteModalContents.updated_at).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
                         </div>
 
                         <div className="note-modal-buttons-end">
