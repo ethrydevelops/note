@@ -15,5 +15,5 @@ A simple note-taking web app.
     * [x] Backend
 * [x] Sort notes by creation/last update (modification) (will require changing all—db+backend+client)
 * [x] Preserve whitespace/new lines on save
-* [ ] HTTPS on backend
+* [x] HTTPS on backend
 * [ ] E2EE (client obviously)
