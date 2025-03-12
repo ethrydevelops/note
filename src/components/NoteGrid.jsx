@@ -63,7 +63,7 @@ export default function NoteGrid() {
             .auth(`Bearer ${cookies.get("noteauth_token")}`)
             .get()
             .json((resp) => {
-                setDeleteModalNoteName(resp.title)
+                setDeleteModalNoteName(resp.title);
                 setSecondDeleteModalOpened(true);
             });
     }
@@ -160,8 +160,8 @@ export default function NoteGrid() {
             </Modal>
 
             <Modal isOpen={secondDeleteModalOpened} closeModal={closeSingleNoteDeleteModal}>
-                <h1 className="m-0 p-0">Delete '{deleteModalNoteName}'?</h1>
-                <p className="m-0 p-0">Are you sure you want to permanently delete <b>{deleteModalNoteName}</b>?</p>
+                <h1 className="m-0 p-0">Delete {deleteModalNoteName.trim() == "" ? "'Untitled Note'" : "'"+deleteModalNoteName+"'"}?</h1>
+                <p className="m-0 p-0">Are you sure you want to permanently delete {deleteModalNoteName.trim() == "" ? "this note" : "'"+deleteModalNoteName+"'"}?</p>
 
                 <div className="flex-things-centered">
                     <div className="flex-delete-buttons">
