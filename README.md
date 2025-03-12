@@ -10,9 +10,9 @@ A simple note-taking web app.
     * [x] delete
 * [x] Read more - client
 * [x] Auto-redirect to notes when logged in
-* [ ] Live updates w/ socket.io:
-    * [ ] Client
-    * [ ] Server
+* [x] Live updates w/ socket.io:
+    * [x] Client
+    * [x] Server
 * [ ] Sort notes by creation/last update (modification) (will require changing all—db+server+client)
 * [x] Preserve whitespace/new lines on save
 * [ ] HTTPS on server
