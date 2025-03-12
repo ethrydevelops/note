@@ -78,7 +78,6 @@ export default function NoteGrid() {
             .delete()
             .json((resp) => {
                 closeModal();
-                refreshNotes();
 
                 setSecondDeleteModalOpened(false);
             });
