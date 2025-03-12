@@ -65,13 +65,13 @@ export default function Home() {
         }
       })
       .catch(async (error) => {
+        console.error("Error creating note", error);
+
         if(await error.response && await error.response.json() && await error.response.json().error) {
           setNewNoteCreationError(error.response.json().error);
         } else {
           setNewNoteCreationError("Error creating note, check console for details"); 
         }
-
-        console.error("Error creating note", error);
       });
   }
 

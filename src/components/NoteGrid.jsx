@@ -2,6 +2,7 @@ import { useEffect, useState } from 'preact/hooks';
 import Cookies from 'universal-cookie';
 import wretch from 'wretch';
 import Modal from './Modal';
+import socket from '../socket';
 
 /* this might be the worst code ive written in my life */
 
@@ -33,6 +34,18 @@ export default function NoteGrid() {
 
     useEffect(() => {
         refreshNotes();
+    }, []);
+
+    /* socket get note changes and reflect */
+    useEffect(() => {
+        socket.on("noteListUpdate", (ok) => {
+            console.log("Syncing note list");
+            refreshNotes(); // note list update signalled
+        });
+
+        return () => {
+            socket.off("noteListUpdate");
+        };
     }, []);
 
     /* modals */
