@@ -144,9 +144,9 @@ export default function NoteGrid() {
 
                     <div className="note-modal-buttons">
                         <div>
-                            <button className="note-modal-delete-button" aria-label="Delete this note" onClick={(e) => {openSingleNoteDeleteModal(noteModalId);}}>
+                            <button className="note-modal-delete-button" aria-label="Delete this note" onClick={(e) => {openSingleNoteDeleteModal(noteModalId);}} type="button">
                                 <i class="bi bi-trash-fill"></i>
-                                </button>
+                            </button>
                         </div>
 
                         <div className="note-modal-buttons-end">
