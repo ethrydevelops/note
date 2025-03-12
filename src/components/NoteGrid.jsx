@@ -26,9 +26,7 @@ export default function NoteGrid() {
             .auth(`Bearer ${cookies.get("noteauth_token")}`)
             .get()
             .json((resp) => {
-                if(resp.length > 0) {
-                    setNotes(resp);
-                }
+                setNotes(resp);
             });
     }
 
@@ -38,8 +36,8 @@ export default function NoteGrid() {
 
     /* socket get note changes and reflect */
     useEffect(() => {
-        socket.on("noteListUpdate", (ok) => {
-            console.log("Syncing note list");
+        socket.on("noteListUpdate", async (ok) => {
+            console.log("Syncing note list")
             refreshNotes(); // note list update signalled
         });
 
