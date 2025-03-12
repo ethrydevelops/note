@@ -5,6 +5,7 @@ import wretch from 'wretch';
 import Cookies from 'universal-cookie';
 import NoteGrid from './components/NoteGrid';
 import Footer from './components/Footer';
+import toast from 'react-hot-toast';
 
 export default function Home() {
   const [greeting, setGreeting] = useState("Hello")
@@ -67,11 +68,7 @@ export default function Home() {
       .catch(async (error) => {
         console.error("Error creating note", error);
 
-        if(await error.response && await error.response.json() && await error.response.json().error) {
-          setNewNoteCreationError(error.response.json().error);
-        } else {
-          setNewNoteCreationError("Error creating note, check console for details"); 
-        }
+        toast.error("Error creating note: " + JSON.parse(error.message).error);
       });
   }
 
