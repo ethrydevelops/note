@@ -4,10 +4,10 @@ A simple note-taking web app.
 
 ## TODO:
 * [x] Display notes - client
-* [ ] Manage (edit,delete,etc) - client:
+* [x] Manage (edit,delete,etc) - client:
     * [x] view enlarged
     * [x] edit
-    * [ ] delete
+    * [x] delete
 * [x] Read more - client
 * [x] Auto-redirect to notes when logged in
 * [ ] Live updates w/ socket.io:
