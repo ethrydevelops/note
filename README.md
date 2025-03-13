@@ -1,6 +1,6 @@
 # Note
 
-A simple note-taking web app created using Preact and custom CSS. It allows users to create and view their notes, edit them, and delete them, with notes being stored on the server.
+A simple note-taking web app created using Preact. It allows users to create and view their notes, edit them, and delete them, with notes being stored on the server.
 
 *Requires a compatible backend such as [Note-backend](https://github.com/ethrythedev/note-backend)*
 
