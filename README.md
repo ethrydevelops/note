@@ -2,10 +2,10 @@
 
 A simple note-taking web app created using Preact and custom CSS. It allows users to create and view their notes, edit them, and delete them, with notes being stored on the server.
 
-*Requires a compatible backend such as [Note-backend](https://github.com/ethrythedev/note-backend)*
+*Requires a compatible backend such as [Note-backend](https://github.com/ethrydevelops/note-backend)*
 
 ## Installation
-1. Clone this repository with `git clone https://github.com/ethrythedev/note.git`
+1. Clone this repository with `git clone https://github.com/ethrydevelops/note.git`
 
 2. Install dependencies with `npm install`.
 
